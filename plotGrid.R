@@ -10,17 +10,25 @@ source("global.R")
 plotGrid <- function(grid) {
   x <- rep(0, 15)
   y <- rep(0, 15)
+  a <- cos(pi / 6)
+  b <- sin(pi / 6)
+
   k <- 1
   for (i in 1:5) {
     for (j in 1:i) {
       x[k] <- 1 - (i - 1) * 0.5 + j
-      y[k] <- (4 - (i - 1)) * cos(pi / 6)
+      y[k] <- (4 - (i - 1)) * a
       k <- k + 1
     }
   }
 
-  a <- cos(pi / 6)
-  b <- sin(pi / 6)
+  diagonals <- data.frame(x = c(0, 4, NA, 0.5, 3.5, NA, 1, 3, NA, 1.5, 2.5, NA,
+                                2, 4, NA, 1.5, 3, NA, 1, 2, NA, 0.5, 1, NA,
+                                0, 2, NA, 1, 2.5, NA, 2, 3, NA, 3, 3.5),
+                          y = c(0, 0, NA, a, a, NA, 2 * c(a, a), NA, 3 * c(a, a), NA,
+                                4 * a, 0, NA, 3 * a, 0, NA, 2 * a, 0, NA, a, 0, NA,
+                                0, 4 * a, NA, 0, 3 * a, NA, 0, 2 * a, NA, 0, a))
+
   triangle <- data.frame( x = c(-a, 2, 4 + a, -a, 2),
                           y = c(-b, 4 * a + 1, -b, -b, 4 * a + 1))
 
@@ -53,12 +61,16 @@ plotGrid <- function(grid) {
                     fill = "white",
                     color = "white") +
 
+       # Add diagonals
+       geom_path(data = diagonals, aes(x, y),
+                 color = "steelblue",
+                 size = 3) +
+
        # Add open holes
        geom_point(data = openCenters, aes(x, y),
                   size = 10,
                   color = "black",
                   fill = "black",
-                  alpha = 0.7,
                   pch = 21) +
 
        # Add "pegged" holes
@@ -77,8 +89,8 @@ plotGrid <- function(grid) {
        geom_path(data = triangle,
                   aes(x, y),
                   color = "black",
-                  size = 2) +
-       theme_void()
+                  size = 2)
+#       theme_void()
 
   return(g)
 }
