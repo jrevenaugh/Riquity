@@ -21,8 +21,8 @@ plotGrid <- function(grid) {
 
   a <- cos(pi / 6)
   b <- sin(pi / 6)
-  triangle <- data.frame( x = c(-a, 2, 4 + a, -a),
-                          y = c(-b, 4 * a + 1, -b, -b))
+  triangle <- data.frame( x = c(-a, 2, 4 + a, -a, 2),
+                          y = c(-b, 4 * a + 1, -b, -b, 4 * a + 1))
 
   mask1 <- data.frame( x = c(-a, 2, 4 + a, 5, 5, -1, -1, -a),
                        y = c(-b, 4 * a + 1, -b, -b, 5, 5, -b, -b))
