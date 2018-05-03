@@ -133,7 +133,7 @@ server <- function(input, output, session) {
                         y = 2 * cos(pi / 6),
                         label = "Winner!",
                         size = 50,
-                        color = "gray50")
+                        color = winningColor)
     }
     return(g)
   })
