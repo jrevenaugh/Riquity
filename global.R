@@ -103,4 +103,4 @@ mask1 <- data.frame( x = c(-a, 2, 4 + a, 5, 5, -1, -1, -a),
 mask2 <- data.frame( x = c(-1, 5, 5, -1, -1),
                      y = c(-b, -b, -1, -1, -b))
 
-winningColor <- "deepskyblue2"
+winningColor <- "deepskyblue1"
