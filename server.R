@@ -26,8 +26,12 @@ server <- function(input, output, session) {
   })
 
   observeEvent(input$reset, {
-    grid$g <- rep(TRUE, 15)
-    openHoles <- sample(1:15, input$nHoles, replace = FALSE)
+    while (1) {
+      grid$g <- rep(TRUE, 15)
+      openHoles <- sample(1:15, input$nHoles, replace = FALSE)
+      grid$g[openHoles] <- FALSE
+      if (input$nHoles == 1 | rqtSolver(grid$g)$solution == TRUE) break
+    }
     grid$g[openHoles] <- FALSE
     grid$current <- 1
     grid$past <- matrix(0, 15, 15)
