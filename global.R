@@ -13,7 +13,7 @@
 #
 
 # Moves or "jumps" are designated by starting and ending hole.
-# Geometry dictates that each hole have 2 or 4 options.  
+# Geometry dictates that each hole have 2 or 4 options.
 # For instance, a peg in hole A can jump to
 # 8 or 3; peg 4 can jump to 1, 6, B or D.
 #
@@ -66,3 +66,24 @@ jumpsOver[C,] <- c(8,D,0,0)
 jumpsOver[D,] <- c(C,8,9,E)
 jumpsOver[E,] <- c(9,D,0,0)
 jumpsOver[F,] <- c(A,E,0,0)
+nJumpsOver <- rep(2, 15)
+nJumpsOver[c(4,6,D)] <- 4
+
+gCenter <- data.frame( x <- rep(0, 15),
+                       y <- rep(0, 15))
+a <- cos(pi / 6)
+k <- 1
+for (i in 1:5) {
+  for (j in 1:i) {
+    gCenter$x[k] <- 1 - (i - 1) * 0.5 + j
+    gCenter$y[k] <- (4 - (i - 1)) * a
+    k <- k + 1
+  }
+}
+
+gDist <- rep(0, 15)
+
+b <- cos(pi / 4)
+angle <- seq(0, 360, 5) * pi / 180
+noSign <- data.frame( x = 2 + c(2 * cos(angle), NA, 2 * b, -2 * b),
+                      y = 2 * a + c(2 * sin(angle), NA, 2 * b, -2 * b))

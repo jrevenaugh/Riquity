@@ -89,8 +89,8 @@ plotGrid <- function(grid) {
        geom_path(data = triangle,
                   aes(x, y),
                   color = "black",
-                  size = 2)
-#       theme_void()
+                  size = 2) +
+       theme_void()
 
   return(g)
 }

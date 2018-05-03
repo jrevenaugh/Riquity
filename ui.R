@@ -6,39 +6,51 @@
 
 require(shiny)
 
-ui <- shinyUI(pageWithSidebar(
-        headerPanel(title = "Riquity v1.0",
-                    windowTitle = "Riquity"
-        ),
-        sidebarPanel(h4("Instructions"),
-                     "Much like checkers, pegs jump two steps along the blue diagonals.",
-                     "Peg must pass over a pegged hole and land in an open spot.",
-                     "Remove the jumped peg.",
-                     br(),
-                     "Game continues until you can no longer jump.",
-                     hr(),
-                     h4("Scoring"),
-                     "Genius: 1 peg left", br(),
-                     "Wise: 2 pegs left", br(),
-                     "Smart: 3 pegs left", br(),
-                     hr(),
-                     sliderInput(inputId = "nHoles",
-                                 label = "Empty Holes:",
-                                 min = 1, max = 5, step = 1,
-                                 value = 1),
-                     checkboxInput(inputId = "deadend",
-                                   label = "Deadend Alert",
-                                   value = FALSE),
-                     actionButton(inputId = "backup",
-                                  label = "Undo Jump"),
-                     actionButton(inputId = "hint",
-                                  label = "Hint"),
-                     hr(),
-                     actionButton(inputId = "reset",
-                                  label = "New Game")
-        ),
-        mainPanel(plotOutput(outputId = "board",
-                             width = "100%")
+ui <- fluidPage(title = "Riquity v1.0",
+        sidebarLayout(
+          sidebarPanel(
+            h4("Riquity - IQ Tester"),
+            br(),
+            h4("Instructions"),
+            "Much like checkers, pegs jump two steps along the blue diagonals.",
+            "Peg must pass over a pegged hole and land in an open spot.",
+            "Remove the jumped peg.",
+            br(),
+            "Game continues until you can no longer jump.",
+            br(), br(),
+            "Click peg to move.  Double click destination.",
+            h4("Scoring"),
+            "A: 1 peg left", br(),
+            "B: 2 pegs left", br(),
+            "C: 3 pegs left", br(),
+            hr(),
+            wellPanel(
+              style = "background-color: #fefeff;",
+              sliderInput(inputId = "nHoles",
+                          label = "Empty Holes:",
+                          min = 1, max = 5, step = 1,
+                          value = 1,
+                          round = 1,
+                          ticks = TRUE,
+                          width = "60%"),
+              actionButton(inputId = "reset",
+                           label = "New Game"),
+              hr(),
+              actionButton(inputId = "deadend",
+                           label = "Deadend?"),
+              actionButton(inputId = "hint",
+                           label = "Hint"),
+              actionButton(inputId = "undo",
+                           label = "Undo"),
+              br(), br(),
+              "Deadend check and hint only available when there are 6 or fewer",
+              "pegs remaining."
+            )
+          ),
+          mainPanel(plotOutput(outputId = "board",
+                               height = "600px",
+                               click = "board_click",
+                               dblclick = "board_dblclick")
+          )
         )
-      )
 )
