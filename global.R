@@ -85,5 +85,5 @@ gDist <- rep(0, 15)
 
 b <- cos(pi / 4)
 angle <- seq(0, 360, 5) * pi / 180
-noSign <- data.frame( x = 2 + c(2 * cos(angle), NA, 2 * b, -2 * b),
-                      y = 2 * a + c(2 * sin(angle), NA, 2 * b, -2 * b))
+stopSign <- data.frame(x = 2 + c(2 * cos(angle), NA, 2 * b, -2 * b),
+                       y = 2 * a + c(2 * sin(angle), NA, 2 * b, -2 * b))

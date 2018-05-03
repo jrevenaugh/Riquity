@@ -124,7 +124,7 @@ server <- function(input, output, session) {
                         alpha = 0.5)
     }
     if (deadend$hit) {
-      g <- g + geom_path(data = noSign, aes(x, y),
+      g <- g + geom_path(data = stopSign, aes(x, y),
                          size = 6,
                          color = "red")
     }
@@ -133,8 +133,8 @@ server <- function(input, output, session) {
                         x = 2,
                         y = 2 * cos(pi / 6),
                         label = "Winner!",
-                        size = 40,
-                        color = "red")
+                        size = 50,
+                        color = "goldenrod")
     }
     return(g)
   })
