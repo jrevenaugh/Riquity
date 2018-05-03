@@ -97,10 +97,9 @@ server <- function(input, output, session) {
     y <- input$board_dblclick$y
     gDist <- sqrt((gCenter$x - x)^2 + (gCenter$y - y)^2)
     l <- which.min(gDist)
-    if (l %in% picked$destinations) {  # Passes all the test, so process
+    if (l %in% picked$destinations) {  # Passes all the tests, so process
       k <- picked$current
       m <- jumpsOver[k,which(jumpsTo[k,] == l)]
- #     grid$past[grid$current] <- grid$g
       grid$current <- grid$current + 1
       grid$g[k] <- FALSE
       grid$g[m] <- FALSE
@@ -134,7 +133,7 @@ server <- function(input, output, session) {
                         y = 2 * cos(pi / 6),
                         label = "Winner!",
                         size = 50,
-                        color = "darkblue")
+                        color = "firebrick3")
     }
     return(g)
   })
