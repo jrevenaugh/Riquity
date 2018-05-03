@@ -45,7 +45,7 @@ server <- function(input, output, session) {
 
   # Provide a hint
   observeEvent(input$hint, {
-    if (sum(grid$g) > 10) return()
+    if (sum(grid$g) > 6) return()
     s <- rqtSolver(grid$g)
     if (s$solution == FALSE) {
       deadend$hit = TRUE
