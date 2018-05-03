@@ -41,8 +41,12 @@ plotGrid <- function(grid) {
   openCenters <- centers %>% filter(gc == FALSE)
   filledCenters <- centers %>% filter(gc == TRUE)
 
-  img <- readPNG( "woodgrain.png" )
-  grob <- rasterGrob( img, interpolate = FALSE )
+#  Read from local file.
+#  img <- readPNG( "woodgrain.png" )
+#  grob <- rasterGrob( img, interpolate = FALSE )
+
+  # Read processed grob stored as RDS on github
+  grob <- readRDS(url("https://github.com/jrevenaugh/Riquity/raw/master/woodgrain.grob.RDS"))
 
   g <- ggplot() +
        scale_y_continuous(limits = c(-1, 5)) +
