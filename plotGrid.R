@@ -9,7 +9,7 @@ plotGrid <- function(grid) {
   filledCenters <- centers %>% filter(gc == TRUE)
 
   g <- ggplot() +
-       scale_y_continuous(limits = c(-1, 5)) +
+       scale_y_continuous(limits = c(-1.5, 4.5)) +
        scale_x_continuous(limits = c(-1, 5)) +
        coord_equal(expand = FALSE) +
 

@@ -24,7 +24,7 @@ ui <- bootstrapPage(
                                       ticks = FALSE,
                                       width = "100%"),
                           actionButton(inputId = "reset",
-                                       label = "Start Over"),
+                                       label = "New Board"),
                           actionButton(inputId = "help",
                                        label = "Instructions"),
                           hr(),

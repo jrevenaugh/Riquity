@@ -34,7 +34,7 @@ server <- function(input, output, session) {
       if (rqtSolver(grid$g)$solution == TRUE) break
     }
     grid$current <- 1
-    grid$past <- matrix(0, 15, 15)
+    grid$past <- matrix(grid$g, 15, 15)
     deadend$hit <- FALSE
     picked$current <- 0
     picked$destination <- 0
