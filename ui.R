@@ -37,6 +37,6 @@ ui <- bootstrapPage(
                           br(), br(),
                           "Deadend check and hint only available when there are 6 or fewer",
                           "pegs remaining.",
-                          style = "opacity: 0.7; background:#FAFAFA;")
+                          style = "opacity: 0.8; background:#FAFAFA;")
   )
 )
