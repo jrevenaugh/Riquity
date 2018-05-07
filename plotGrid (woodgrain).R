@@ -13,36 +13,46 @@ plotGrid <- function(grid) {
        scale_x_continuous(limits = c(-1, 5)) +
        coord_equal(expand = FALSE) +
 
-       # Fill board background and outline
-       geom_polygon(data = triangle,
+       # Add woodgrain background
+       annotation_custom(grob, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+
+       # Mask off woodgrain outside of board are
+       geom_polygon(data = mask1, aes(x, y),
+                    fill = "white",
+                    color = "white") +
+       geom_polygon(data = mask2,
                     aes(x, y),
-                    fill = "gray99",
-                    color = "gray60",
-                    size = 1) +
+                    fill = "white",
+                    color = "white") +
+
+       # Outline board
+       geom_path(data = triangle,
+                 aes(x, y),
+                 color = "black",
+                 size = 2) +
 
        # Add diagonals
        geom_path(data = diagonals, aes(x, y),
                  color = "steelblue",
-                 alpha = 0.5,
                  size = 3) +
 
        # Add open holes
        geom_point(data = openCenters, aes(x, y),
                   size = 10,
-                  color = "gray40",
-                  fill = "gray40",
+                  color = "gray20",
+                  fill = "gray20",
                   pch = 21) +
 
        # Add "pegged" holes
        geom_point(data = filledCenters, aes(x, y),
                   size = 30,
-                  color = "gray30",
+                  color = "black",
                   fill = "darkgoldenrod",
                   pch = 21) +
 
        geom_point(data = filledCenters, aes(x, y),
                   size = 20,
-                  color = "gray50",
+                  color = "black",
                   fill = "goldenrod",
                   pch = 21) +
 

@@ -135,7 +135,7 @@ server <- function(input, output, session) {
       g <- g + annotate("text",
                         x = 2,
                         y = 2 * cos(pi / 6),
-                        label = "Winner!",
+                        label = "!!!",
                         size = 50,
                         color = winningColor)
     }
