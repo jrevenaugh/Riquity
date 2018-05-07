@@ -41,12 +41,6 @@ server <- function(input, output, session) {
     winner$yeah <- FALSE
   })
 
-  # Check if game has reached a deadend
-  observeEvent(input$deadend, {
-    if (sum(grid$g) > 6) return()
-    if (rqtSolver(grid$g)$solution == FALSE) deadend$hit = TRUE
-  })
-
   # Provide a hint
   observeEvent(input$hint, {
     if (sum(grid$g) > 6) return()

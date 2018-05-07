@@ -87,6 +87,10 @@ stopSign <- data.frame(x = 2 + c(2 * cos(angle), NA, 2 * b, -2 * b),
 # Plotting structures ----------------------------------------------------------
 a <- cos(pi / 6)
 b <- sin(pi / 6)
+r <- 25 / 72
+l13 <- r * a / b
+l2 <- r * a
+h <- r / b
 
 diagonals <- data.frame(x = c(0, 4, NA, 0.5, 3.5, NA, 1, 3, NA, 1.5, 2.5, NA,
                               2, 4, NA, 1.5, 3, NA, 1, 2, NA, 0.5, 1, NA,
@@ -95,8 +99,23 @@ diagonals <- data.frame(x = c(0, 4, NA, 0.5, 3.5, NA, 1, 3, NA, 1.5, 2.5, NA,
                               4 * a, 0, NA, 3 * a, 0, NA, 2 * a, 0, NA, a, 0, NA,
                               0, 4 * a, NA, 0, 3 * a, NA, 0, 2 * a, NA, 0, a))
 
-triangle <- data.frame( x = c(-a, 2, 4 + a, -a, 2),
-                        y = c(-b, 4 * a + 1, -b, -b, 4 * a + 1))
+corners <- data.frame(x = c(-a, 2, 4 + a, -a),
+                      y = c(-b, 4 * a + 1, -b, -b))
+
+a1 <- seq(3 * pi / 2, 5 * pi / 6, length.out = 30)
+r1x <- corners$x[1] + l13 + r * cos(a1)
+r1y <- corners$y[1] + r + r * sin(a1)
+
+a2 <- seq(5 * pi / 6, pi / 6, length.out = 30)
+r2x <- corners$x[2] + r * cos(a2)
+r2y <- corners$y[2] - h + r * sin(a2)
+
+a3 <- seq(pi / 6, -pi / 2, length.out = 30)
+r3x <- corners$x[3] - l13 + r * cos(a3)
+r3y <- corners$y[3] + r + r * sin(a3)
+
+triangle <- data.frame(x = c(r1x, r2x, r3x, corners$x[1] + l13),
+                       y = c(r1y, r2y, r3y, corners$y[1]))
 
 mask1 <- data.frame( x = c(-a, 2, 4 + a, 5, 5, -1, -1, -a),
                      y = c(-b, 4 * a + 1, -b, -b, 5, 5, -b, -b))
