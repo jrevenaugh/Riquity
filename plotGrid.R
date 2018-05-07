@@ -14,11 +14,11 @@ plotGrid <- function(grid) {
        coord_equal(expand = FALSE) +
 
        # Fill board background and outline
-       geom_polygon(data = triangle,
-                    aes(x, y),
-                    fill = "gray99",
-                    color = "gray60",
-                    size = 1) +
+       # geom_polygon(data = triangle,
+       #              aes(x, y),
+       #              fill = "gray99",
+       #              color = "gray60",
+       #              size = 1) +
 
        # Add diagonals
        geom_path(data = diagonals, aes(x, y),

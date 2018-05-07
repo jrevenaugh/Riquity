@@ -129,7 +129,7 @@ server <- function(input, output, session) {
     if (deadend$hit) {
       g <- g + geom_path(data = stopSign, aes(x, y),
                          size = 6,
-                         color = "red")
+                         color = "gray50")
     }
     if (winner$yeah) {
       g <- g + annotate("text",
