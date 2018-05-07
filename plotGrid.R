@@ -22,7 +22,7 @@ plotGrid <- function(grid) {
 
        # Add diagonals
        geom_path(data = diagonals, aes(x, y),
-                 color = "steelblue",
+                 color = "steelblue3",
                  alpha = 0.5,
                  size = 3) +
 
