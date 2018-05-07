@@ -21,7 +21,6 @@ rqtSolver <- function(igrid) {
   # it takes 13 steps to finish puzzle.
 
   while(iStep <= 13) {
-
     # If we don't have a Candidates list, make one.
     if (nTried[iStep] == 0) {
       cList <- compileCandidates(grid[iStep,])

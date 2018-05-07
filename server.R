@@ -30,7 +30,8 @@ server <- function(input, output, session) {
       grid$g <- rep(TRUE, 15)
       openHoles <- sample(1:15, input$nHoles, replace = FALSE)
       grid$g[openHoles] <- FALSE
-      if (input$nHoles == 1 | rqtSolver(grid$g)$solution == TRUE) break
+      if (input$nHoles == 1) break
+      if (rqtSolver(grid$g)$solution == TRUE) break
     }
     grid$current <- 1
     grid$past <- matrix(0, 15, 15)
