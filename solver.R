@@ -8,7 +8,6 @@ source("global.R")
 source("compileCandidates.R")
 
 rqtSolver <- function(igrid) {
-
   # Initialize given starting grid (filled are TRUE).
   iStart <- length(igrid[igrid == FALSE])
   iStep <- iStart

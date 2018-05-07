@@ -2,21 +2,7 @@
 #
 # Make a simple plot of a Riquity grid
 
-require(tidyverse)
-require(png)
-require(grid)
-source("global.R")
-
-#  Read from local file.
-#  img <- readPNG( "woodgrain.png" )
-#  grob <- rasterGrob( img, interpolate = FALSE )
-
-# Read processed grob stored on github
-grob <- readRDS(url("https://github.com/jrevenaugh/Riquity/raw/master/woodgrain.grob.RDS"))
-
-
 plotGrid <- function(grid) {
-
   centers <- gCenter
   centers$gc <- grid
   openCenters <- centers %>% filter(gc == FALSE)

@@ -104,3 +104,12 @@ mask2 <- data.frame( x = c(-1, 5, 5, -1, -1),
                      y = c(-b, -b, -1, -1, -b))
 
 winningColor <- "deepskyblue1"
+
+#  Read from local file.
+#  img <- readPNG( "woodgrain.png" )
+#  grob <- rasterGrob( img, interpolate = FALSE )
+
+# Read processed grob stored on github
+grob <- readRDS(url("https://github.com/jrevenaugh/Riquity/raw/master/woodgrain.grob.RDS"))
+
+require(tidyverse)

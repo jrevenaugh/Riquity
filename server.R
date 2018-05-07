@@ -141,4 +141,21 @@ server <- function(input, output, session) {
     }
     return(g)
   })
+
+  observeEvent(input$help, {
+    showModal(modalDialog(
+      title = "Instructions",
+      HTML(paste("Much like checkers, pegs jump two steps along the blue diagonals.",
+                 "Jump must pass over a pegged hole and land in an open one.",
+                 "Remove the jumped peg.  Game continues until you can no longer jump.",
+                 tags$br(), tags$br(),
+                 "Click to select peg to move.  Double click the destination.",
+                 tags$h4("Scoring"),
+                 "Good: 3 pegs left", br(),
+                 "Better: 2 pegs left", br(),
+                 "Best: 1 peg left")
+        ),
+        easyClose = TRUE)
+    )
+  })
 }
