@@ -32,7 +32,6 @@ server <- function(input, output, session) {
       grid$g[openHoles] <- FALSE
       if (input$nHoles == 1 | rqtSolver(grid$g)$solution == TRUE) break
     }
-    grid$g[openHoles] <- FALSE
     grid$current <- 1
     grid$past <- matrix(0, 15, 15)
     deadend$hit <- FALSE

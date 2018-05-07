@@ -14,7 +14,7 @@ ui <- bootstrapPage(
              click = "board_click",
              dblclick = "board_dblclick"),
 
-  absolutePanel(top = 10, left = 10, width = "300px", draggable = TRUE,
+  absolutePanel(top = 10, left = 10, width = "260px", draggable = TRUE,
                 wellPanel(h4("Riquity V1.0"),
                           sliderInput(inputId = "nHoles",
                                       label = "Empty Holes:",
